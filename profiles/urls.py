@@ -1,5 +1,5 @@
 from django.urls import path
-from Profiles import views
+from profiles import views
 
 urlpatterns = [
     path('accounts/', views.UserListView.as_view()),
