@@ -1,13 +1,11 @@
 from rest_framework import permissions
 
-class IsOwner(permissions.BasePermission):
-	def has_object_permission(self, request, view, obj):
-		return obj.owner == request.user
+class IsSuperUserOrSelf(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        # Allow superusers to perform any action
+        if request.user.is_superuser:
+            return True
 
-class IsUser(permissions.BasePermission):
-	def has_object_permission(self, request, view, obj):
-		return obj.self == request.user
-
-class IsAdmin(permissions.BasePermission):
-	def has_object_permission(self, request, view, obj):
-		return obj.self.is_admin == request.user.is_admin
+        # Allow users to perform actions on their own profile
+        return obj == request.user
+        
