@@ -30,6 +30,30 @@ ALLOWED_HOSTS = []
 #Change default user
 AUTH_USER_MODEL = 'users.CustomUser'
 
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                # Already defined Django-related contexts here
+
+                # `allauth` needs this from django
+                'django.template.context_processors.request',
+            ],
+        },
+    },
+]
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 
 # Application definition
 
@@ -40,7 +64,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'django.contrib.sites',
+    'rest_auth.registration',
     'users',
 ]
 
@@ -52,28 +83,22 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'kladdera_api.urls'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
 
 WSGI_APPLICATION = 'kladdera_api.wsgi.application'
 
+# All Auth
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/?verification=1'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/?verification=1'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
