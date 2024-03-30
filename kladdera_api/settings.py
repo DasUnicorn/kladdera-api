@@ -46,8 +46,6 @@ TEMPLATES = [
     },
 ]
 
-SITE_ID=1
-
 
 # Application definition
 
@@ -61,7 +59,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
-    'django.contrib.sites',
     'users',
 ]
 
