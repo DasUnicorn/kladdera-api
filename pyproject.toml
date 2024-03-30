@@ -10,7 +10,6 @@ packages = [{include = "kladdera_api"}]
 python = "^3.11"
 django = "^3.2.4"
 djangorestframework = "^3.14.0"
-django-allauth = "^0.61.1"
 dj-rest-auth = "^5.0.2"
 
 
