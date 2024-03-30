@@ -184,10 +184,10 @@ cryptography==42.0.5 ; python_version >= "3.11" and python_version < "4.0" \
 defusedxml==0.7.1 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69 \
     --hash=sha256:a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61
+dj-rest-auth==5.0.2 ; python_version >= "3.11" and python_version < "4.0" \
+    --hash=sha256:aad7d912476169e9991547bf98645344d3939be2d7052098048d819524c115d9
 django-allauth==0.61.1 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:5b4ae515ea74f54f0041210692eee10c309ad15ddbbd03d3620693c75e3f7945
-django-rest-auth==0.9.5 ; python_version >= "3.11" and python_version < "4.0" \
-    --hash=sha256:f11e12175dafeed772f50d740d22caeab27e99a3caca24ec65e66a8d6de16571
 django==3.2.25 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:7ca38a78654aee72378594d63e51636c04b8e28574f5505dff630895b5472777 \
     --hash=sha256:a52ea7fcf280b16f7b739cec38fa6d3f8953a5456986944c3ca97e79882b4e38
@@ -218,9 +218,6 @@ requests-oauthlib==2.0.0 ; python_version >= "3.11" and python_version < "4.0" \
 requests==2.31.0 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f \
     --hash=sha256:942c5a758f98d790eaed1a29cb6eefc7ffb0d1cf7af05c3d2791656dbd6ad1e1
-six==1.16.0 ; python_version >= "3.11" and python_version < "4.0" \
-    --hash=sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926 \
-    --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254
 sqlparse==0.4.4 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:5430a4fe2ac7d0f93e66f1efc6e1338a41884b7ddf2a350cedd20ccc4d9d28f3 \
     --hash=sha256:d446183e84b8349fa3061f0fe7f06ca94ba65b426946ffebe6e3e8295332420c

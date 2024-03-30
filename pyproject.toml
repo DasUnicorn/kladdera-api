@@ -11,7 +11,7 @@ python = "^3.11"
 django = "^3.2.4"
 djangorestframework = "^3.14.0"
 django-allauth = "^0.61.1"
-django-rest-auth = "^0.9.5"
+dj-rest-auth = "^5.0.2"
 
 
 [build-system]
