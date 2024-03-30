@@ -20,7 +20,7 @@ class CustomUserManager(BaseUserManager):
         return user
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-	username = None
+    username = None
     email = models.EmailField(unique=True)
     current_streak = models.PositiveIntegerField(default=0)
 
