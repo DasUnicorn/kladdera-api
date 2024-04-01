@@ -53,7 +53,7 @@ REST_AUTH_SERIALIZERS = {
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'kladdera.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'kladdera.herokuapp.com', 'kladdera-9fa58a88bfbf.herokuapp.com']
 
 #Change default user
 AUTH_USER_MODEL = 'users.CustomUser'
