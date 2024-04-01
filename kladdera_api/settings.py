@@ -14,6 +14,9 @@ from pathlib import Path
 import os
 import dj_database_url
 
+if os.path.exists('env.py'):
+    import env
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -50,7 +53,7 @@ REST_AUTH_SERIALIZERS = {
 DEBUG = 'DEV' in os.environ
 
 
-ALLOWED_HOSTS = ['localhost', 'kladdera.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'kladdera.herokuapp.com']
 
 #Change default user
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -181,9 +184,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-# STATIC_URL = '/static/'
-# Disable collection of static files
-DISABLE_COLLECTSTATIC=1
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
