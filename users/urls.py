@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CustomUserViewSet
+from .views import CustomUserViewSet, CreateUserView
 
 urlpatterns = [
     path('user/', CustomUserViewSet.as_view({
@@ -13,4 +13,7 @@ urlpatterns = [
         'patch': 'partial_update',  # Endpoint to partially update a specific user
         'delete': 'destroy'   # Endpoint to delete a specific user
     }), name='user-detail'),
+
+    # New registration endpoint
+    path('register/', CreateUserView.as_view(), name='user-register'),
 ]
