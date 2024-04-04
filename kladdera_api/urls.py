@@ -15,14 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import root_route #logout_route
+from .views import root_route
 
 
 urlpatterns = [
     path('', root_route),
     path('admin/', admin.site.urls),
-    # our logout route has to be above the default one to be matched first
-    # path('dj-rest-auth/logout/', logout_route),
     path('auth/', include('dj_rest_auth.urls')),
     path('', include('users.urls')),
+    path('', include('tasks.urls')),
 ]
