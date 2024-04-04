@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import CustomUser
+from dj_rest_auth.models import TokenModel
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -17,3 +18,14 @@ class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ['email', 'password']
+
+
+class TokenSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Token model.
+    """
+    user = CustomUserSerializer(many=False, read_only=True)
+    
+    class Meta:
+        model = TokenModel
+        fields = ('key', 'user')

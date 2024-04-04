@@ -7,10 +7,10 @@ from .serializers import CustomUserSerializer
 from kladdera_api.permissions import IsSuperUserOrSelf
 
 
-class CustomUserViewSet(viewsets.ModelViewSet):
-    queryset = CustomUser.objects.all()
-    serializer_class = CustomUserSerializer
-    permission_classes = [IsAuthenticated, IsSuperUserOrSelf]
+#class CustomUserViewSet(viewsets.ModelViewSet):
+#    queryset = CustomUser.objects.all()
+#    serializer_class = CustomUserSerializer
+#    permission_classes = [IsAuthenticated, IsSuperUserOrSelf]
 
 
 class CreateUserView(CreateAPIView):
