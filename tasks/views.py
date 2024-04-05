@@ -14,7 +14,7 @@ class TaskList(APIView):
     ]
 
     def get(self, request):
-        tasks = Task.objects.all()
+        tasks = Task.objects.filter(user=request.user)
         serializer = TaskSerializer(
             tasks, many=True, context={'request': request}
         )
