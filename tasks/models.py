@@ -11,7 +11,7 @@ class Task(models.Model):
     ]
 
     title = models.CharField(max_length=200)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True)
     energy_level = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     completed_at = models.DateTimeField(null=True, blank=True)
