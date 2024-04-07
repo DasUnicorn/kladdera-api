@@ -1,16 +1,17 @@
 from django.http import Http404
-from rest_framework import status, permissions
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Task
 from .serializers import TaskSerializer
-from kladdera_api.permissions import IsOwnerOrReadOnly
+from kladdera_api.permissions import IsOwner
 
 
 class TaskList(APIView):
     serializer_class = TaskSerializer
     permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
+        IsAuthenticated
     ]
 
     def get(self, request):
@@ -35,19 +36,19 @@ class TaskList(APIView):
 
 
 class TaskDetail(APIView):
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsAuthenticated & IsOwner]
     serializer_class = TaskSerializer
 
     def get_object(self, pk):
         try:
             task = Task.objects.get(pk=pk)
-            self.check_object_permissions(self.request, task)
             return task
         except Task.DoesNotExist:
             raise Http404
 
     def get(self, request, pk):
         task = self.get_object(pk)
+        self.check_object_permissions(request, task)
         serializer = TaskSerializer(
             task, context={'request': request}
         )
@@ -55,6 +56,7 @@ class TaskDetail(APIView):
 
     def put(self, request, pk):
         task = self.get_object(pk)
+        self.check_object_permissions(request, task)
         serializer = TaskSerializer(
             task, data=request.data, context={'request': request}
         )
@@ -67,6 +69,7 @@ class TaskDetail(APIView):
 
     def delete(self, request, pk):
         task = self.get_object(pk)
+        self.check_object_permissions(request, task)
         task.delete()
         return Response(
             status=status.HTTP_204_NO_CONTENT

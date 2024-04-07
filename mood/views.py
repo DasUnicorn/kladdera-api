@@ -1,21 +1,21 @@
 from django.http import Http404
-from rest_framework import status, permissions
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Mood
 from .serializers import MoodSerializer
-from kladdera_api.permissions import IsSuperUserOrSelf
+from kladdera_api.permissions import IsOwner
 
 
 class MoodList(APIView):
     serializer_class = MoodSerializer
     permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
+        IsAuthenticated
     ]
 
     def get(self, request):
         moods = Mood.objects.filter(user=request.user)
-        print("user", request.user)
         serializer = MoodSerializer(
             moods, many=True, context={'request': request}
         )
@@ -36,28 +36,30 @@ class MoodList(APIView):
 
 
 class MoodDetail(APIView):
-    permission_classes = [IsSuperUserOrSelf]
+    permission_classes = [IsAuthenticated & IsOwner]
     serializer_class = MoodSerializer
 
     def get_object(self, pk):
         try:
-            task = Mood.objects.get(pk=pk)
-            self.check_object_permissions(self.request, task)
-            return task
+            mood = Mood.objects.get(pk=pk)
+            self.check_object_permissions(self.request, mood)
+            return mood
         except Mood.DoesNotExist:
             raise Http404
 
     def get(self, request, pk):
-        task = self.get_object(pk)
+        mood = self.get_object(pk)
+        self.check_object_permissions(request, mood)
         serializer = MoodSerializer(
-            task, context={'request': request}
+            mood, context={'request': request}
         )
         return Response(serializer.data)
 
     def put(self, request, pk):
-        task = self.get_object(pk)
+        mood = self.get_object(pk)
+        self.check_object_permissions(request, mood)
         serializer = MoodSerializer(
-            task, data=request.data, context={'request': request}
+            mood, data=request.data, context={'request': request}
         )
         if serializer.is_valid():
             serializer.save()
@@ -67,8 +69,9 @@ class MoodDetail(APIView):
         )
 
     def delete(self, request, pk):
-        task = self.get_object(pk)
-        task.delete()
+        mood = self.get_object(pk)
+        self.check_object_permissions(request, mood)
+        mood.delete()
         return Response(
             status=status.HTTP_204_NO_CONTENT
         )
