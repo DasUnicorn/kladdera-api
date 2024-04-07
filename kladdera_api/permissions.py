@@ -8,7 +8,7 @@ class IsSuperUserOrSelf(permissions.BasePermission):
             return True
 
         # Allow users to perform actions on their own profile
-        return obj == request.user
+        return obj.user == request.user
         
 
 class IsOwnerOrReadOnly(permissions.BasePermission):

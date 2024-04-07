@@ -24,4 +24,5 @@ urlpatterns = [
     path('auth/', include('dj_rest_auth.urls')),
     path('', include('users.urls')),
     path('', include('tasks.urls')),
+    path('', include('mood.urls')),
 ]
