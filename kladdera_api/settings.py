@@ -50,7 +50,7 @@ REST_AUTH = {
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), ]
