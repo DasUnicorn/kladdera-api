@@ -10,4 +10,4 @@ class MoodSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Mood
-        fields = ['date', 'mood', 'user', 'note']
+        fields = ['id', 'date', 'mood', 'user', 'note']

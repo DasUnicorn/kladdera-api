@@ -53,9 +53,9 @@ REST_AUTH = {
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'),]
+ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), ]
 
-#Change default user
+# Change default user
 AUTH_USER_MODEL = 'users.CustomUser'
 
 TEMPLATES = [

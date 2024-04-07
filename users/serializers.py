@@ -25,7 +25,7 @@ class TokenSerializer(serializers.ModelSerializer):
     Serializer for Token model.
     """
     user = CustomUserSerializer(many=False, read_only=True)
-    
+
     class Meta:
         model = TokenModel
         fields = ('key', 'user')
