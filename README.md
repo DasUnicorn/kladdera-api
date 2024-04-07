@@ -12,6 +12,19 @@ Imagine a tool that empowers users to seize the high-energy days for tackling ta
 
 <!-- toc -->
 
+- [Technologies Used](#technologies-used)
+  * [Languages Used](#languages-used)
+  * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
+- [Testing](#testing)
+  * [PEP8 Tests:](#pep8-tests)
+  * [Manuel Testing:](#manuel-testing)
+- [Deployment](#deployment)
+  * [Local Deployment](#local-deployment)
+  * [Heroku Deployment](#heroku-deployment)
+- [Credits](#credits)
+
+<!-- tocstop -->
+
 ## Technologies Used
 
 * GitHub – storage and deployment
